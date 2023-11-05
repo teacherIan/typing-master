@@ -280,10 +280,10 @@ export class GameScreen extends AppScreen {
             dropShadowAngle: Math.PI / 6,
             dropShadowDistance: 2,
         });
-        //make sure text is within screen bounds
-        text.position.set(Math.random() * this.width - text.width, -150);
+        //make sure text is within {} screen bounds
+        text.position.set(Math.random() * this.width - text.width, -150); // {right side}
         if (text.position.x < text.width) {
-            text.position.x += text.width;
+            text.position.x += text.width; // {left side}
         }
 
         this.addChild(text);
