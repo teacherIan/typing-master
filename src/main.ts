@@ -14,6 +14,8 @@ import { colors } from './config/colors';
 export const app = new Application<HTMLCanvasElement>({
     resolution: Math.max(window.devicePixelRatio, 2),
     backgroundColor: colors.bg,
+    powerPreference: 'high-performance',
+    antialias: true,
 });
 
 // Expose that app to the PixiJS Devtools (https://chrome.google.com/webstore/detail/pixijs-devtools/aamddddknhcagpehecnhphigffljadon)
@@ -32,7 +34,7 @@ function resize() {
 
     app.renderer.resize(windowWidth, windowHeight); // Resize the renderer
     // THIS IS IMPORTANT, IT WILL RESIZE THE LAYOUTS
-    game.resize(windowWidth, windowHeight); // Resize the game and all scenes and their contents 
+    game.resize(windowWidth, windowHeight); // Resize the game and all scenes and their contents
 }
 
 /** Setup app and initialize assets */

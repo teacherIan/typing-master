@@ -2,50 +2,56 @@
 // To be replaced with a i18n controller to manage languages
 export default {
     loadingScreen: {
-        loading: "LOADING",
-        poweredBy: "POWERED BY",
+        loading: 'LOADING',
+        poweredBy: 'POWERED BY',
     },
     titleScreen: {
-        levels: "LEVELS",
+        levels: 'LEVELS',
         settings: {
-            title: "SETTINGS",
-            save: "SAVE",
-            GFX: "GFX",
-            low: "LOW",
-            medium: "MEDIUM",
-            high: "HIGH",
-            BGM: "BGM",
-            SFX: "SFX",
-            GPU: "GPU",
-            antiAliasing: "ANTI-ALIASING",
-            subtitles: "SUBTITLES",
-            cutScenes: "CUT SCENES",
+            title: 'SETTINGS',
+            save: 'SAVE',
+            GFX: 'GFX',
+            low: 'LOW',
+            medium: 'MEDIUM',
+            high: 'HIGH',
+            BGM: 'BGM',
+            SFX: 'SFX',
+            GPU: 'GPU',
+            antiAliasing: 'ANTI-ALIASING',
+            subtitles: 'SUBTITLES',
+            cutScenes: 'CUT SCENES',
         },
         info: {
-            title: "INFO",
-            accept: "ACCEPT",
-            decline: "DECLINE",
+            title: 'INFO',
+            accept: 'ACCEPT',
+            decline: 'DECLINE',
         },
         menu: {
-            title: "MENU",
+            title: 'MENU',
             items: {
-                levels: "LEVELS",
-                replay: "REPLAY",
-                settings: "SETTINGS",
-                exit: "EXIT",
-            }
+                levels: 'LEVELS',
+                replay: 'REPLAY',
+                settings: 'SETTINGS',
+                exit: 'EXIT',
+            },
         },
         iconsMenu: {
-            'home': 'HOME',
-            'info': 'INFO',
-            'settings': 'SETTINGS',
-            'play': 'PLAY'
-        }
+            home: 'HOME',
+            info: 'INFO',
+            settings: 'SETTINGS',
+            play: 'PLAY',
+        },
     },
     gameScreen: {
-        level: "LEVEL",
+        level: 'LEVEL',
         tutorial: {
-            hello: "Hello",
-        }
-    }
-}
+            hello: 'Use Your Left Index Finger',
+        },
+    },
+    demoScreen: {
+        level: 'LEVEL',
+        tutorial: {
+            hello: 'Use your left index finger',
+        },
+    },
+};
