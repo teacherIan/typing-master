@@ -3,7 +3,7 @@
 export default {
     loadingScreen: {
         loading: 'LOADING',
-        poweredBy: 'POWERED BY',
+        poweredBy: 'HIS',
     },
     titleScreen: {
         levels: 'LEVELS',

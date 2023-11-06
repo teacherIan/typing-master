@@ -12,6 +12,13 @@ import { CloseButton } from '../components/CloseButton';
 import { Layout } from '@pixi/layout';
 import { defaultFont } from '../config/texts';
 import { Text } from '@pixi/text';
+import keyboardKeys from '../config/keyboardKeys';
+
+interface gameElementInterface {
+    text: Text;
+    string: String;
+    active: Boolean;
+}
 
 /** Game screen.
  * To be used to show all the game play and UI.
@@ -29,9 +36,12 @@ export class GameScreen extends AppScreen {
     private tutorialMessage!: Hint; // tutorial message, dialog box with a message
 
     public level = 1; // current level (TODO: this should be a part of the game state)
-    private gameElements: Text[] = [];
+    private gameElements: gameElementInterface[] = [];
 
     constructor(options: SceneData) {
+        document.addEventListener('keydown', (e) => {
+            this.handleKeyDown(e);
+        });
         // constructor accepts an object with data that will be passed to the screen when it is shown
         super('GameScreen'); // Creates Layout with id 'GameScreen'
 
@@ -68,6 +78,8 @@ export class GameScreen extends AppScreen {
             },
         });
     }
+
+    public enableKeydown() {}
 
     /** Add pause button component to the screen.
      * Pause button suits to pause the game and show the pause window and the title screen.
@@ -192,6 +204,16 @@ export class GameScreen extends AppScreen {
         });
     }
 
+    private handleKeyDown(e: KeyboardEvent) {
+        console.log('The Key is ' + e.key);
+        this.gameElements.forEach((element) => {
+            console.log(element.string);
+            if (element.string === e.key.toUpperCase()) {
+                element.text.destroy();
+            }
+        });
+    }
+
     /** Add tutorial message component to the screen.
      * It suits to show the tutorial message and navigate the player through the game.
      */
@@ -263,11 +285,15 @@ export class GameScreen extends AppScreen {
     }
 
     /**
-     * Game Elements wont use Pixi layout as their location is not fixed
+     * Game Elements wont use Pixi layout as their locations are not fixed
+     * todo: placement after resize
      */
 
     public addChallengeLetter() {
-        const text = new Text('Z', {
+        const ran = Math.floor(Math.random() * keyboardKeys.allKeys.length);
+        const letter = keyboardKeys.allKeys[ran];
+
+        const text = new Text(letter, {
             fontFamily: defaultFont,
             fontSize: 100,
             fill: '#ff0000',
@@ -287,18 +313,21 @@ export class GameScreen extends AppScreen {
         }
 
         this.addChild(text);
-        this.gameElements.push(text);
+        this.gameElements.push({
+            text: text,
+            string: letter,
+        }); // array for controlling game objects
     }
 
     /** Method that is called one every game tick (see Game.ts) */
     onUpdate() {
-        const ranNum = Math.floor(Math.random() * 10);
+        const ranNum = Math.floor(Math.random() * 100);
         if (ranNum == 1) {
             this.addChallengeLetter();
         }
 
         this.gameElements.forEach((element) => {
-            element.position.y += 1;
+            element.text.position.y += 1;
         });
 
         if (this.energy) {
